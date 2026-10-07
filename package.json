@@ -1,0 +1,47 @@
+{
+  "name": "nexwall",
+  "version": "0.1.0",
+  "description": "Zero-dependency JavaScript/TypeScript client for the NexWall free wallpaper API: 4K portrait wallpapers in 50+ categories and live wallpapers.",
+  "type": "module",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    }
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "wallpaper",
+    "wallpaper-api",
+    "free-wallpaper-api",
+    "wallpapers",
+    "4k-wallpapers",
+    "live-wallpapers",
+    "api-client",
+    "rest-api",
+    "nexwall"
+  ],
+  "homepage": "https://nexwall.kodnextech.com/wallpaper-api/free-wallpaper-api",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kodnextechnologies/nexwall-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kodnextechnologies/nexwall-js/issues"
+  },
+  "author": "KodNex Technologies (https://kodnextech.com)",
+  "license": "MIT"
+}

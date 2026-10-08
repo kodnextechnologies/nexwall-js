@@ -39,13 +39,34 @@ test("throws NexWallError with retryAfter on 429", async () => {
   });
 });
 
-test("requires a key for the public API but not for a custom proxy", () => {
+test("requires a key for the public API but not for a custom proxy", async () => {
   const saved = process.env.NEXWALL_API_KEY;
   delete process.env.NEXWALL_API_KEY;
   try {
-    assert.throws(() => new NexWall({ fetch: fakeFetch(200, {}) }), NexWallError);
-    const proxied = new NexWall({ baseUrl: "https://my-app.example/api/nexwall", fetch: fakeFetch(200, {}) });
+    await assert.rejects(new NexWall({ fetch: fakeFetch(200, {}) }).categories(), NexWallError);
+    const proxied = new NexWall({ baseUrl: "https://my-app.example/api/nexwall", fetch: fakeFetch(200, { data: [] }) });
     assert.equal(proxied.apiKey, undefined);
+    await proxied.categories();
+  } finally {
+    if (saved !== undefined) process.env.NEXWALL_API_KEY = saved;
+  }
+});
+
+test("demo() works without a key and never sends one", async () => {
+  const saved = process.env.NEXWALL_API_KEY;
+  delete process.env.NEXWALL_API_KEY;
+  try {
+    const fetch = fakeFetch(200, { demo: true, data: [{ id: 9 }] });
+    const res = await new NexWall({ fetch }).demo({ perPage: 5, sort: "random" });
+    assert.equal(res.data[0].id, 9);
+    const url = new URL(fetch.calls[0].url);
+    assert.equal(url.pathname, "/api/developer/v1/demo/wallpapers");
+    assert.equal(url.searchParams.get("per_page"), "5");
+    assert.equal(fetch.calls[0].init.headers.Authorization, undefined);
+
+    const keyed = fakeFetch(200, { data: [] });
+    await new NexWall({ apiKey: "k", fetch: keyed }).demo();
+    assert.equal(keyed.calls[0].init.headers.Authorization, undefined);
   } finally {
     if (saved !== undefined) process.env.NEXWALL_API_KEY = saved;
   }

@@ -9,6 +9,17 @@ Zero-dependency JavaScript / TypeScript client for **[NexWall](https://nexwall.k
 npm install nexwall
 ```
 
+## Try it without a key
+
+```js
+import { NexWall } from "nexwall";
+
+const { data } = await new NexWall().demo({ sort: "random", perPage: 5 });
+console.log(data.map((w) => w.image_url));
+```
+
+`demo()` returns up to 10 free wallpapers with no API key (10 requests/minute, 30/day per IP). For pagination and every other method, use a free key.
+
 ## Usage
 
 ```js

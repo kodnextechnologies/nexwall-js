@@ -28,9 +28,19 @@ export class NexWall {
     this.rateLimit = null;
 
     if (!this.fetch) throw new NexWallError("No fetch implementation found. Use Node 18+ or pass { fetch }.");
-    if (!this.apiKey && this.baseUrl === DEFAULT_BASE_URL) {
-      throw new NexWallError("Missing API key. Get a free key at https://nexwall.kodnextech.com/developers/register");
-    }
+  }
+
+  /**
+   * Keyless demo: up to 10 free wallpapers, no API key needed (limited per IP).
+   * @param {{ perPage?: number, categoryId?: number, search?: string, sort?: "newest"|"popular"|"random" }} [params]
+   */
+  demo(params = {}) {
+    return this.#get("/demo/wallpapers", {
+      per_page: params.perPage,
+      category_id: params.categoryId,
+      search: params.search,
+      sort: params.sort,
+    }, { keyless: true });
   }
 
   /** List categories available on your plan. */
@@ -74,14 +84,18 @@ export class NexWall {
     return res.data?.[0] ?? null;
   }
 
-  async #get(path, query = {}) {
+  async #get(path, query = {}, { keyless = false } = {}) {
+    if (!keyless && !this.apiKey && this.baseUrl === DEFAULT_BASE_URL) {
+      throw new NexWallError("Missing API key. Get a free key at https://nexwall.kodnextech.com/developers/register (or try demo() without a key)");
+    }
+
     const url = new URL(this.baseUrl + path);
     for (const [key, value] of Object.entries(query)) {
       if (value !== undefined && value !== null && value !== "") url.searchParams.set(key, String(value));
     }
 
     const headers = { Accept: "application/json" };
-    if (this.apiKey) headers.Authorization = `Bearer ${this.apiKey}`;
+    if (this.apiKey && !keyless) headers.Authorization = `Bearer ${this.apiKey}`;
 
     const res = await this.fetch(url, { headers });
     this.rateLimit = {

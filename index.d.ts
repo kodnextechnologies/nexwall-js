@@ -62,6 +62,8 @@ export declare class NexWall {
   constructor(options?: { apiKey?: string; baseUrl?: string; fetch?: typeof fetch });
   readonly baseUrl: string;
   rateLimit: RateLimit | null;
+  /** Keyless demo: up to 10 free wallpapers, no API key needed (limited per IP). */
+  demo(params?: { perPage?: number; categoryId?: number; search?: string; sort?: "newest" | "popular" | "random" }): Promise<ListResponse<Wallpaper> & { demo: true }>;
   categories(): Promise<ListResponse<Category>>;
   wallpapers(params?: WallpaperQuery): Promise<ListResponse<Wallpaper>>;
   categoryWallpapers(categoryId: number, params?: { page?: number; perPage?: number }): Promise<ListResponse<Wallpaper>>;

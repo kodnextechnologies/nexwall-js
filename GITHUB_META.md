@@ -2,7 +2,7 @@
 
 ## About (description)
 
-Zero-dependency JavaScript/TypeScript client (npm: nexwall) for the NexWall free wallpaper API: 4K portrait wallpapers in 50+ categories and live wallpapers. Node 18+, Bun, Deno, Workers. MIT.
+Zero-dependency JavaScript/TypeScript client (npm: nexwall) for the NexWall wallpaper API: portrait HD wallpapers up to 4K in 49 categories. Free plan 100 requests/day, commercial use allowed; keyless demo(). Node 18+, Bun, Deno, Workers. MIT.
 
 ## Website
 

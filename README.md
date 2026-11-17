@@ -1,8 +1,8 @@
 # nexwall: JavaScript client for the free NexWall wallpaper API
 
-Zero-dependency JavaScript / TypeScript client for **[NexWall](https://nexwall.kodnextech.com/wallpaper-api/free-wallpaper-api)**, a free wallpaper API built for wallpaper apps: curated **4K portrait wallpapers** (up to 2160×3840) in **50+ categories**, plus looping **live MP4 wallpapers**.
+Zero-dependency JavaScript / TypeScript client for **[NexWall](https://nexwall.kodnextech.com/wallpaper-api/free-wallpaper-api)**, a free wallpaper API built for wallpaper apps: curated **portrait HD wallpapers up to 4K** (most around 1440×2560) in **49 categories**, plus looping **live MP4 wallpapers** on the Ultra plan.
 
-- Free plan: **100 requests/day**, no credit card. [Get a free API key](https://nexwall.kodnextech.com/developers/register)
+- Free plan: **100 requests/day**, no credit card, commercial use allowed. [Get a free API key](https://nexwall.kodnextech.com/developers/register)
 - Works in Node 18+, Bun, Deno and Cloudflare Workers. TypeScript types included.
 
 ```bash
@@ -75,9 +75,11 @@ Complete proxy examples for Next.js, Laravel and plain Node are in [nexwall-web-
 
 | Plan | Price | Requests/day |
 |---|---|---|
-| Free | $0 | 100 |
-| Pro | $4.99/mo · ₹399/mo | 10,000 (all categories, commercial use) |
+| Free | $0 | 100 (non-premium static wallpapers) |
+| Pro | $4.99/mo · ₹399/mo | 10,000 (+ premium static categories) |
 | Ultra | $10.99/mo · ₹899/mo | 50,000 (+ live MP4 wallpapers) |
+
+Commercial use (ads, subscriptions, in-app purchases, paid apps) is allowed on every plan, including Free, under the [NexWall Developer API License](https://nexwall.kodnextech.com/wallpaper-api/license).
 
 ## Links
 

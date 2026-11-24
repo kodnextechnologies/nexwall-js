@@ -76,8 +76,8 @@ Complete proxy examples for Next.js, Laravel and plain Node are in [nexwall-web-
 | Plan | Price | Requests/day |
 |---|---|---|
 | Free | $0 | 100 (non-premium static wallpapers) |
-| Pro | $4.99/mo · ₹399/mo | 10,000 (+ premium static categories) |
-| Ultra | $10.99/mo · ₹899/mo | 50,000 (+ live MP4 wallpapers) |
+| Pro | $5.49/mo · ₹449/mo | 10,000 (+ premium static categories) |
+| Ultra | $11.49/mo · ₹949/mo | 50,000 (+ live MP4 wallpapers) |
 
 Commercial use (ads, subscriptions, in-app purchases, paid apps) is allowed on every plan, including Free, under the [NexWall Developer API License](https://nexwall.kodnextech.com/wallpaper-api/license).
 

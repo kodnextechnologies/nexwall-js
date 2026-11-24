@@ -1,6 +1,6 @@
 {
   "name": "nexwall",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Zero-dependency JavaScript/TypeScript client for the NexWall wallpaper API: portrait HD wallpapers up to 4K in 49 categories. Free plan 100 requests/day, commercial use allowed, keyless demo. Live MP4 on Ultra.",
   "type": "module",
   "main": "./index.js",
